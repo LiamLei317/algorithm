@@ -1,5 +1,9 @@
 package com.coding.slideWindow.definiteLength;
 
+/**
+ * 给定数组的定长子数组最大平均数
+ * index:643
+ */
 public class FindMaxAverage {
 
     public double findMaxAverage(int[] nums, int k) {
