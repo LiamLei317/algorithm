@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * 半径为k的子数组的平均数
  * index:2090
+ * <a href="https://leetcode.cn/problems/k-radius-subarray-averages/description/">...</a>
  */
 public class GetRadiusAvg {
 

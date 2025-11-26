@@ -5,6 +5,7 @@ import java.util.Set;
 /**
  * 给定字符串的固定子串的最大元音数
  * index:1456
+ * <a href="https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/">...</a>
  */
 public class MaxVowels {
 

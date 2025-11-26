@@ -3,6 +3,7 @@ package com.coding.slideWindow.definiteLength;
 /**
  * 大小为k且平均值大于等于阈值的子数组数目
  * index:1343
+ * <a href="https://leetcode.cn/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/">...</a>
  */
 public class NumOfSubarrays {
 

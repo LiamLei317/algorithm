@@ -3,6 +3,7 @@ package com.coding.slideWindow.definiteLength;
 /**
  * 给定数组的定长子数组最大平均数
  * index:643
+ * <a href="https://leetcode.cn/problems/maximum-average-subarray-i/description/">...</a>
  */
 public class FindMaxAverage {
 
