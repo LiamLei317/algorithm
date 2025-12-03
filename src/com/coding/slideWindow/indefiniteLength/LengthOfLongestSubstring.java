@@ -10,6 +10,10 @@ import java.util.Map;
  */
 public class LengthOfLongestSubstring {
 
+    /**
+     * 关键逻辑：
+     * 用一个 map 记录当前已经出现过的字符及其索引，当出现重复字符时，将左指针放到重复字符的索引的下一位
+     */
     public int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
         Map<Character, Integer> map = new HashMap<>(); // 记录当前出现的不重复字符及其索引

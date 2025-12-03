@@ -1,7 +1,7 @@
 package com.coding.slideWindow.indefiniteLength;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 每个字符最多只出现两次的最长子串
@@ -11,31 +11,44 @@ import java.util.Map;
 public class MaximumLengthSubstring {
 
     public int maximumLengthSubstring(String s) {
-        int ans = 0;
-        int currentLength = 0;
-        Map<Character, Integer> map = new HashMap<>(); // 当前窗口内字符及其出现次数
-        Map<Character, Integer> indexMap = new HashMap<>(); // 当前窗口内字符第一次出现的索引
+        int[] charCnt = new int[26]; // 代替 map 来记录当前字符出现的次数
         char[] chars = s.toCharArray();
-        for (int i = 0, j = 0; j < chars.length; j++) {
-            Integer rightCnt = map.get(chars[j]);
-            // 右边窗口值未出现过或窗口内该字符出现频率小于2直接操作
-            if (rightCnt == null || rightCnt < 2) {
-                map.put(chars[j], rightCnt == null ? 1 : rightCnt + 1);
-                if (rightCnt == null) {
-                    indexMap.put(chars[j], j);
+        int ans = 0;
+        for (int left = 0, right = 0; right < chars.length; right++) {
+            char c = chars[right];
+            charCnt[c - 'a']++;
+            while (charCnt[c - 'a'] > 2) {
+                charCnt[chars[left] - 'a']--;
+                left++;
+            }
+            ans = Math.max(ans, right - left + 1);
+        }
+        return ans;
+    }
+
+    /**
+     * 关键逻辑
+     * 用队列维护符合要求的字符串
+     */
+    public int maximumLengthSubstring_one(String s) {
+        Queue<Character> queue = new LinkedList<>(); // 用队列来维护当前的窗口
+        int[] charCnt = new int[26]; // 代替 map 来记录当前字符出现的次数
+        char[] chars = s.toCharArray();
+        int ans = 0;
+        for (char c : chars) {
+            int index = c - 'a';
+            if (charCnt[index] < 2) {
+                // 记录自增
+                charCnt[index]++;
+            } else {
+                // 队列循环出队直到当前字符也出去一个
+                while (queue.peek() != c) {
+                    charCnt[queue.poll() - 'a']--;
                 }
-                currentLength = j - i + 1;
-                ans = Math.max(ans, currentLength);
-                continue;
+                queue.poll(); // 和当前字符一样的字符出队
             }
-            // 否则更新窗口左边界
-            i = indexMap.get(chars[j]) + 1;
-            // 更新第一次出现的字符索引
-            int index = i;
-            while (chars[index] != chars[j]) {
-                index++;
-            }
-            indexMap.put(chars[j], index);
+            queue.offer(c); // 当前字符入队
+            ans = Math.max(ans, queue.size());
         }
         return ans;
     }
