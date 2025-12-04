@@ -25,10 +25,8 @@ public class LongestSubarray {
                     }
                     left++;
                 }
-                ans = Math.max(ans, right - left + 1);
-            } else {
-                ans = Math.max(ans, right - left);
             }
+            ans = Math.max(ans, right - left);
         }
         return ans;
         // [0,1,1,1,0,1,1,0,1]
