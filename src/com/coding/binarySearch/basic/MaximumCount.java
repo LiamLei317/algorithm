@@ -1,4 +1,4 @@
-package com.coding.binarySearch;
+package com.coding.binarySearch.basic;
 
 public class MaximumCount {
 
