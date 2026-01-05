@@ -8,6 +8,6 @@ package com.coding.graph.graphTraversal.bfs;
 public class CountOfPairs {
 
     public int[] countOfPairs(int n, int x, int y) {
-
+        return new int[]{0, 0};
     }
 }
